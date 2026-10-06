@@ -83,13 +83,14 @@ export function ApplyForm({ isId, jobs = [], defaultJobSlug }: { isId: boolean, 
         setSelectedJob(defaultJobSlug || (jobs.length > 0 ? jobs[0].slug : "general"));
         setSelectedFile(null);
       } else {
-        throw new Error(result.error);
+        throw new Error(result.error || "Unknown error occurred");
       }
-    } catch (error) {
+    } catch (error: any) {
+      console.error(error);
       toast.error(
         isId ? "Gagal Mengirim Lamaran" : "Failed to Submit Application",
         {
-          description: isId ? "Terjadi kesalahan pada sistem saat mengunggah lamaran Anda. Silakan coba lagi." : "A system error occurred while uploading your application. Please try again."
+          description: error.message || (isId ? "Terjadi kesalahan sistem. Silakan coba lagi." : "A system error occurred. Please try again.")
         }
       );
     } finally {
@@ -131,7 +132,7 @@ export function ApplyForm({ isId, jobs = [], defaultJobSlug }: { isId: boolean, 
       </div>
       <div className="space-y-2">
         <label className="text-sm font-medium">{isId ? "Tautan Portofolio / LinkedIn / GitHub" : "Portfolio / LinkedIn / GitHub URL"}</label>
-        <input name="portfolioUrl" required type="url" className="w-full h-12 px-4 rounded-lg bg-muted/30 border border-border/50 focus:border-primary outline-none transition-colors" placeholder="https://" />
+        <input name="portfolioUrl" type="text" className="w-full h-12 px-4 rounded-lg bg-muted/30 border border-border/50 focus:border-primary outline-none transition-colors" placeholder="linkedin.com/in/..." />
       </div>
       <div className="space-y-2">
         <label className="text-sm font-medium">{isId ? "Surat Pengantar (Cover Letter)" : "Cover Letter"}</label>

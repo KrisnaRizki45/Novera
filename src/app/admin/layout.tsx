@@ -29,7 +29,7 @@ export default function AdminLayout({
     return <>{children}</>;
   }
 
-  const SidebarContent = () => (
+  const renderSidebar = () => (
     <>
       <div className="h-16 flex items-center justify-between px-6 border-b border-border/50">
         <Link href="/admin" onClick={() => setIsMobileMenuOpen(false)} className="font-heading font-bold text-xl tracking-tight text-foreground flex items-center">
@@ -76,7 +76,7 @@ export default function AdminLayout({
     <div className="flex h-screen bg-muted/20">
       {/* Desktop Sidebar */}
       <div className="w-64 bg-background border-r border-border/50 flex flex-col hidden md:flex">
-        <SidebarContent />
+        {renderSidebar()}
       </div>
 
       {/* Mobile Sidebar Overlay */}
@@ -84,7 +84,7 @@ export default function AdminLayout({
         <div className="fixed inset-0 z-40 flex md:hidden">
           <div className="fixed inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
           <div className="relative flex-1 flex flex-col max-w-xs w-full bg-background border-r border-border/50">
-            <SidebarContent />
+            {renderSidebar()}
           </div>
         </div>
       )}

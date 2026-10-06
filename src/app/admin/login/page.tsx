@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Lock, Mail, Info } from 'lucide-react';
+import { ArrowLeft, Lock, Mail, Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
 import { createClient } from '@/lib/supabase/client';
 
@@ -12,6 +12,7 @@ export default function AdminLoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -90,13 +91,20 @@ export default function AdminLoginPage() {
                     <Lock className="w-4 h-4" />
                   </div>
                   <input 
-                    type="password" 
+                    type={showPassword ? "text" : "password"} 
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="w-full h-11 pl-10 pr-4 rounded-lg bg-background border border-border/50 focus:border-primary outline-none transition-colors" 
+                    className="w-full h-11 pl-10 pr-12 rounded-lg bg-background border border-border/50 focus:border-primary outline-none transition-colors" 
                     placeholder="••••••••" 
                   />
+                  <button 
+                    type="button" 
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
                 </div>
               </div>
               
