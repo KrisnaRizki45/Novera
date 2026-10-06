@@ -53,6 +53,10 @@ export default async function CareerDetailPage({ params }: { params: Promise<{ s
   const responsibilities = isId ? parseJsonStr(job.responsibilities_id) : parseJsonStr(job.responsibilities_en);
   const requirements = isId ? parseJsonStr(job.requirements_id) : parseJsonStr(job.requirements_en);
   const techStack = parseJsonStr(job.technologies) || ['Digital Tools', 'Modern Workflow'];
+  const benefits = isId ? parseJsonStr(job.benefits_id) : parseJsonStr(job.benefits_en);
+  const displayBenefits = (benefits && benefits.length > 0) 
+    ? benefits 
+    : (isId ? ['Peralatan Kerja (MacBook)', 'Asuransi Kesehatan', 'Anggaran Pembelajaran'] : ['Work Equipment (MacBook)', 'Health Insurance', 'Learning Budget']);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -148,9 +152,12 @@ export default async function CareerDetailPage({ params }: { params: Promise<{ s
                 
                 <h4 className="font-bold text-lg mb-4">{isId ? "Benefit" : "Benefits"}</h4>
                 <ul className="space-y-3 text-sm text-muted-foreground mb-6">
-                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> {isId ? "Peralatan Kerja (MacBook)" : "Work Equipment (MacBook)"}</li>
-                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> {isId ? "Asuransi Kesehatan" : "Health Insurance"}</li>
-                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> {isId ? "Anggaran Pembelajaran" : "Learning Budget"}</li>
+                  {displayBenefits.map((b: string, i: number) => (
+                    <li key={i} className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" /> 
+                      {b}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </FadeIn>

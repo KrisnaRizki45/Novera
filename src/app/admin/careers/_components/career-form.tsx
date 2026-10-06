@@ -33,6 +33,8 @@ export function CareerForm({ initialData }: { initialData?: any }) {
       requirements_en: JSON.stringify(parseLines(formData.get('requirements_en') as string)),
       requirements_id: JSON.stringify(parseLines(formData.get('requirements_id') as string)),
       technologies: JSON.stringify(parseLines(formData.get('technologies') as string)),
+      benefits_en: JSON.stringify(parseLines(formData.get('benefits_en') as string)),
+      benefits_id: JSON.stringify(parseLines(formData.get('benefits_id') as string)),
       application_url: formData.get('application_url'),
       is_active: formData.get('is_active') === 'on',
       published_at: formData.get('is_active') === 'on' ? new Date().toISOString() : null,
@@ -156,10 +158,22 @@ export function CareerForm({ initialData }: { initialData?: any }) {
         </div>
       </div>
 
-      <div className="space-y-4">
-        <div>
-          <label className="text-sm font-medium">Technologies / Tools [1 per line]</label>
-          <textarea name="technologies" defaultValue={initialData?.technologies ? (Array.isArray(initialData.technologies) ? initialData.technologies : JSON.parse(initialData.technologies || '[]')).join('\n') : ''} rows={3} className="w-full mt-1 p-3 rounded-md border border-border/50 bg-background text-sm" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-4">
+          <div>
+            <label className="text-sm font-medium">Benefits (EN) [1 per line]</label>
+            <textarea name="benefits_en" defaultValue={initialData?.benefits_en ? (Array.isArray(initialData.benefits_en) ? initialData.benefits_en : JSON.parse(initialData.benefits_en || '[]')).join('\n') : 'Work Equipment (MacBook)\nHealth Insurance\nLearning Budget'} rows={4} className="w-full mt-1 p-3 rounded-md border border-border/50 bg-background text-sm" />
+          </div>
+          <div>
+            <label className="text-sm font-medium">Technologies / Tools [1 per line]</label>
+            <textarea name="technologies" defaultValue={initialData?.technologies ? (Array.isArray(initialData.technologies) ? initialData.technologies : JSON.parse(initialData.technologies || '[]')).join('\n') : ''} rows={3} className="w-full mt-1 p-3 rounded-md border border-border/50 bg-background text-sm" />
+          </div>
+        </div>
+        <div className="space-y-4">
+          <div>
+            <label className="text-sm font-medium">Benefits (ID) [1 per line]</label>
+            <textarea name="benefits_id" defaultValue={initialData?.benefits_id ? (Array.isArray(initialData.benefits_id) ? initialData.benefits_id : JSON.parse(initialData.benefits_id || '[]')).join('\n') : 'Peralatan Kerja (MacBook)\nAsuransi Kesehatan\nAnggaran Pembelajaran'} rows={4} className="w-full mt-1 p-3 rounded-md border border-border/50 bg-background text-sm" />
+          </div>
         </div>
       </div>
 
