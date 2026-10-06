@@ -7,6 +7,8 @@ import { ScrollDots } from "@/components/ui/scroll-dots";
 import { getLanguage } from "@/lib/i18n";
 import { createClient } from "@/lib/supabase/server";
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata() {
   const lang = await getLanguage();
   const isId = lang === 'id';

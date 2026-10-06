@@ -8,6 +8,8 @@ import { FAQAccordion } from '@/components/ui/faq-accordion';
 
 import { createClient } from '@/lib/supabase/server';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata() {
   const lang = await getLanguage();
   const isId = lang === 'id';
@@ -19,29 +21,11 @@ export async function generateMetadata() {
   };
 }
 
-// Fallback MOCK DATA if Supabase is not configured yet
-const MOCK_JOBS = [
-  {
-    slug: 'software-engineer-backend',
-    title: 'Software Engineer (Backend)',
-    department: 'Engineering',
-    location: 'Jakarta (Hybrid)',
-    type: 'Full-time'
-  },
-  {
-    slug: 'ui-ux-designer',
-    title: 'UI/UX Product Designer',
-    department: 'Design',
-    location: 'Remote',
-    type: 'Full-time'
-  }
-];
-
 export default async function CareersPage() {
   const lang = await getLanguage();
   const isId = lang === 'id';
 
-  let openJobs = MOCK_JOBS;
+  let openJobs: { slug: string; title: string; department: string; location: string; type: string }[] = [];
   
   try {
     const supabase = createClient();
@@ -51,7 +35,7 @@ export default async function CareersPage() {
       .eq('is_active', true)
       .order('created_at', { ascending: false });
       
-    if (jobs && jobs.length > 0 && !error) {
+    if (jobs && !error) {
       openJobs = jobs.map(j => ({
         slug: j.slug,
         title: isId ? j.title_id : j.title_en,
@@ -61,7 +45,7 @@ export default async function CareersPage() {
       }));
     }
   } catch (err) {
-    console.error("Supabase not configured or error fetching jobs", err);
+    console.error("Error fetching jobs", err);
   }
 
   // Generate lightweight job options for the dropdown form

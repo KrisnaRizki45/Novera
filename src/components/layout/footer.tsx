@@ -71,7 +71,7 @@ export function Footer({ lang = "en" }: { lang?: string }) {
             </p>
             
             <div className="flex items-center gap-3">
-              <Link href="https://wa.me/1234567890?text=Hello%20NOVERA,%20I%20would%20like%20to%20discuss%20a%20software%20project.">
+              <Link href="https://wa.me/6281222616472?text=Hello%20NOVERA,%20I%20would%20like%20to%20discuss%20a%20software%20project." target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="icon" className="rounded-full hover:text-primary hover:border-primary/50 transition-colors">
                   <MessageSquare className="w-4 h-4" />
                 </Button>
@@ -81,7 +81,17 @@ export function Footer({ lang = "en" }: { lang?: string }) {
                   <Mail className="w-4 h-4" />
                 </Button>
               </Link>
-              <Link href="https://linkedin.com">
+              <Link href="https://instagram.com/noveratech.id" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="icon" className="rounded-full hover:text-primary hover:border-primary/50 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                </Button>
+              </Link>
+              <Link href="https://tiktok.com/@noveratech.id" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="icon" className="rounded-full hover:text-primary hover:border-primary/50 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                </Button>
+              </Link>
+              <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="icon" className="rounded-full hover:text-primary hover:border-primary/50 transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </Button>

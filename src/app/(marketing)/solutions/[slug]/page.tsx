@@ -6,6 +6,8 @@ import { getLanguage } from '@/lib/i18n';
 import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> | { slug: string } }) {
   const lang = await getLanguage();
   const isId = lang === 'id';

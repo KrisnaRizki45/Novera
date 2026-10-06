@@ -212,7 +212,7 @@ export function Header({ initialLang = "en" }: { initialLang?: string }) {
                         {isId ? "Mulai Proyek" : "Start a Project"} <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </Link>
-                    <Link href="https://wa.me/6281234567890?text=Hello%20NOVERA" onClick={closeMobileMenu}>
+                    <Link href="https://wa.me/6281222616472?text=Hello%20NOVERA" onClick={closeMobileMenu}>
                       <Button variant="outline" className="w-full h-11 text-[15px] group border-primary/20 hover:bg-primary/5 hover:text-primary">
                         {isId ? "Hubungi via WhatsApp" : "Contact via WhatsApp"} <ArrowUpRight className="w-4 h-4 ml-2 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                       </Button>
@@ -300,7 +300,7 @@ export function Header({ initialLang = "en" }: { initialLang?: string }) {
       </header>
 
       {/* GLOBAL FLOATING WHATSAPP CTA */}
-      <Link href="https://wa.me/6281234567890?text=Hello%20NOVERA" target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-50 group">
+      <Link href="https://wa.me/6281222616472?text=Hello%20NOVERA" target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-50 group">
         <div className="flex items-center gap-0">
           <div className="bg-background border border-border/50 shadow-lg px-4 py-2 rounded-l-full translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none hidden md:block">
             <span className="text-sm font-medium whitespace-nowrap">{isId ? "Ngobrol via WhatsApp" : "Chat on WhatsApp"}</span>
