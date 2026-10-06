@@ -169,19 +169,9 @@ export default async function CareerDetailPage({ params }: { params: Promise<{ s
                 ? "Kirimkan CV terbaru dan portofolio Anda. Kami sangat merekomendasikan untuk melampirkan cover letter yang menjelaskan mengapa Anda cocok untuk peran ini." 
                 : "Submit your latest CV and portfolio. We highly recommend attaching a cover letter explaining why you are a great fit for this role."}
             </p>
-            {job.application_url ? (
-              <div className="bg-background border border-border/50 rounded-2xl p-8 max-w-2xl mx-auto text-center shadow-xl">
-                <a href={job.application_url} target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="h-14 px-8 font-medium shadow-lg hover:scale-105 transition-transform bg-primary text-primary-foreground">
-                    {isId ? "Buka Formulir Eksternal" : "Open External Form"}
-                  </Button>
-                </a>
-              </div>
-            ) : (
-              <div className="bg-background border border-border/50 rounded-2xl p-8 max-w-2xl mx-auto text-left shadow-xl">
-                <ApplyForm isId={isId} jobs={[{slug: slug, title: jobTitle}]} defaultJobSlug={slug} />
-              </div>
-            )}
+            <div className="bg-background border border-border/50 rounded-2xl p-8 max-w-2xl mx-auto text-left shadow-xl">
+              <ApplyForm isId={isId} jobs={[{slug: slug, title: jobTitle}]} defaultJobSlug={slug} />
+            </div>
           </FadeIn>
         </div>
       </section>

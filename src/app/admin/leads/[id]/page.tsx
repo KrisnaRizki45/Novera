@@ -31,7 +31,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
         </Link>
         <div>
           <h1 className="text-xl font-heading font-bold mb-1">Lead Details</h1>
-          <p className="text-muted-foreground text-sm">View and manage project inquiry.</p>
+          <p className="text-muted-foreground text-sm">View and manage incoming inquiry.</p>
         </div>
       </div>
 
@@ -40,6 +40,14 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
           <div>
             <h3 className="text-sm font-medium text-muted-foreground mb-1">Full Name</h3>
             <p className="font-semibold">{lead.first_name} {lead.last_name}</p>
+          </div>
+          <div>
+            <h3 className="text-sm font-medium text-muted-foreground mb-1">Inquiry Type</h3>
+            <p className="font-semibold">
+              <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${lead.inquiry_type === 'Career' ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'}`}>
+                {lead.inquiry_type || 'Project'}
+              </span>
+            </p>
           </div>
           <div>
             <h3 className="text-sm font-medium text-muted-foreground mb-1">Email Address</h3>
@@ -68,7 +76,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
         </div>
 
         <div className="pt-6 border-t border-border/50">
-          <h3 className="text-sm font-medium text-muted-foreground mb-3">Project Details</h3>
+          <h3 className="text-sm font-medium text-muted-foreground mb-3">{lead.inquiry_type === 'Career' ? 'Application Details & Cover Letter' : 'Project Details'}</h3>
           <div className="bg-muted/30 rounded-lg p-4 text-sm leading-relaxed whitespace-pre-wrap border border-border/50">
             {lead.details}
           </div>

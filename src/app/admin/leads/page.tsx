@@ -34,6 +34,7 @@ export default async function AdminLeadsPage() {
               <thead className="text-xs text-muted-foreground bg-muted/20 uppercase border-b border-border/50">
                 <tr>
                   <th className="px-6 py-4 font-medium">Name</th>
+                  <th className="px-6 py-4 font-medium">Type</th>
                   <th className="px-6 py-4 font-medium">Email</th>
                   <th className="px-6 py-4 font-medium">Service</th>
                   <th className="px-6 py-4 font-medium">Status</th>
@@ -45,6 +46,11 @@ export default async function AdminLeadsPage() {
                 {leads.map((lead) => (
                   <tr key={lead.id} className="hover:bg-muted/10 transition-colors">
                     <td className="px-6 py-4 font-medium text-foreground">{lead.first_name} {lead.last_name}</td>
+                    <td className="px-6 py-4">
+                      <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${lead.inquiry_type === 'Career' ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'}`}>
+                        {lead.inquiry_type || 'Project'}
+                      </span>
+                    </td>
                     <td className="px-6 py-4 text-muted-foreground">{lead.email}</td>
                     <td className="px-6 py-4 text-muted-foreground">{lead.service}</td>
                     <td className="px-6 py-4">
