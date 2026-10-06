@@ -41,23 +41,29 @@ export default function AdminLayout({
       </div>
       
       <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1">
-        {navigation.map((item) => (
-          <Link
-            key={item.name}
-            href={item.href}
-            onClick={() => setIsMobileMenuOpen(false)}
-            className={`flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-muted/50 transition-colors ${
-              pathname === item.href || pathname.startsWith(item.href + '/')
-                ? 'bg-primary/10 text-primary' 
-                : 'text-muted-foreground hover:text-foreground'
-            }`}
-          >
-            <item.icon className={`w-5 h-5 transition-colors ${
-              pathname === item.href || pathname.startsWith(item.href + '/') ? 'text-primary' : 'group-hover:text-primary'
-            }`} />
-            {item.name}
-          </Link>
-        ))}
+        {navigation.map((item) => {
+          const isActive = item.href === '/admin' 
+            ? pathname === '/admin' 
+            : pathname === item.href || pathname.startsWith(item.href + '/');
+            
+          return (
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-muted/50 transition-colors ${
+                isActive
+                  ? 'bg-primary/10 text-primary' 
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <item.icon className={`w-5 h-5 transition-colors ${
+                isActive ? 'text-primary' : 'group-hover:text-primary'
+              }`} />
+              {item.name}
+            </Link>
+          );
+        })}
       </div>
 
       <div className="p-4 border-t border-border/50">
