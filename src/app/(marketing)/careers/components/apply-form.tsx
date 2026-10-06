@@ -161,7 +161,18 @@ export function ApplyForm({ isId, jobs = [], defaultJobSlug }: { isId: boolean, 
               <CheckCircle2 className="w-8 h-8 text-green-500 shrink-0" />
               <div className="flex flex-col overflow-hidden">
                 <span className="font-medium text-sm truncate">{selectedFile.name}</span>
-                <span className="text-xs text-muted-foreground">{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</span>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="text-xs text-muted-foreground">{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</span>
+                  <span className="text-xs text-muted-foreground">•</span>
+                  <a 
+                    href={URL.createObjectURL(selectedFile)} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-xs font-medium text-primary hover:underline flex items-center"
+                  >
+                    {isId ? "Lihat Detail" : "View File"}
+                  </a>
+                </div>
               </div>
             </div>
             <button 
